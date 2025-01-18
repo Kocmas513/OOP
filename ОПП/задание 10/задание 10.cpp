@@ -1,18 +1,18 @@
 #include <iostream>
 #include <cmath>
 
-// Абстрактный класс Фигура
+// РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ Р¤РёРіСѓСЂР°
 class Figure {
 public:
-    virtual ~Figure() {} // Виртуальный деструктор
+    virtual ~Figure() {} // Р’РёСЂС‚СѓР°Р»СЊРЅС‹Р№ РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 
-    // Чисто виртуальные функции для вычисления площади и периметра/длину окружности
+    // Р§РёСЃС‚Рѕ РІРёСЂС‚СѓР°Р»СЊРЅС‹Рµ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РїР»РѕС‰Р°РґРё Рё РїРµСЂРёРјРµС‚СЂР°/РґР»РёРЅСѓ РѕРєСЂСѓР¶РЅРѕСЃС‚Рё
     virtual double area() const = 0;
     virtual double perimeter() const = 0;
-    virtual void display() const = 0; // Метод для отображения информации о фигуре
+    virtual void display() const = 0; // РњРµС‚РѕРґ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РёРЅС„РѕСЂРјР°С†РёРё Рѕ С„РёРіСѓСЂРµ
 };
 
-// Класс Круг
+// РљР»Р°СЃСЃ РљСЂСѓРі
 class Circle : public Figure {
 private:
     double radius;
@@ -21,43 +21,43 @@ public:
     Circle(double r) : radius(r) {}
 
     double area() const override {
-        return M_PI * radius * radius; // Площадь круга
+        return M_PI * radius * radius; // РџР»РѕС‰Р°РґСЊ РєСЂСѓРіР°
     }
 
     double perimeter() const override {
-        return 2 * M_PI * radius; // Длина окружности
+        return 2 * M_PI * radius; // Р”Р»РёРЅР° РѕРєСЂСѓР¶РЅРѕСЃС‚Рё
     }
 
     void display() const override {
-        std::cout << "Круг: радиус = " << radius << ", Площадь круга = " << area() 
-                  << ", Длина окружности = " << perimeter() << std::endl;
+        std::cout << "РљСЂСѓРі: СЂР°РґРёСѓСЃ = " << radius << ", РџР»РѕС‰Р°РґСЊ РєСЂСѓРіР° = " << area() 
+                  << ", Р”Р»РёРЅР° РѕРєСЂСѓР¶РЅРѕСЃС‚Рё = " << perimeter() << std::endl;
     }
 };
 
-// Класс Треугольник
+// РљР»Р°СЃСЃ РўСЂРµСѓРіРѕР»СЊРЅРёРє
 class Triangle : public Figure {
 private:
-    double a, b, c; // Стороны треугольника
+    double a, b, c; // РЎС‚РѕСЂРѕРЅС‹ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
 
 public:
     Triangle(double side1, double side2, double side3) : a(side1), b(side2), c(side3) {}
 
     double area() const override {
-        double s = perimeter() / 2; // Полупериметр
-        return sqrt(s * (s - a) * (s - b) * (s - c)); // Площадь по формуле Герона
+        double s = perimeter() / 2; // РџРѕР»СѓРїРµСЂРёРјРµС‚СЂ
+        return sqrt(s * (s - a) * (s - b) * (s - c)); // РџР»РѕС‰Р°РґСЊ РїРѕ С„РѕСЂРјСѓР»Рµ Р“РµСЂРѕРЅР°
     }
 
     double perimeter() const override {
-        return a + b + c; // Периметр треугольника
+        return a + b + c; // РџРµСЂРёРјРµС‚СЂ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
     }
 
     void display() const override {
-        std::cout << "Триугольник: стороны = " << a << ", " << b << ", " << c 
-                  << ", Площадь = " << area() << ", Пириметр = " << perimeter() << std::endl;
+        std::cout << "РўСЂРёСѓРіРѕР»СЊРЅРёРє: СЃС‚РѕСЂРѕРЅС‹ = " << a << ", " << b << ", " << c 
+                  << ", РџР»РѕС‰Р°РґСЊ = " << area() << ", РџРёСЂРёРјРµС‚СЂ = " << perimeter() << std::endl;
     }
 };
 
-// Класс Прямоугольник
+// РљР»Р°СЃСЃ РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє
 class Rectangle : public Figure {
 private:
     double width, height;
@@ -66,16 +66,16 @@ public:
     Rectangle(double w, double h) : width(w), height(h) {}
 
     double area() const override {
-        return width * height; // Площадь прямоугольника
+        return width * height; // РџР»РѕС‰Р°РґСЊ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
     }
 
     double perimeter() const override {
-        return 2 * (width + height); // Периметр прямоугольника
+        return 2 * (width + height); // РџРµСЂРёРјРµС‚СЂ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
     }
 
     void display() const override {
-        std::cout << "Прямоугольник: ширина = " << width << ", высота = " << height 
-                  << ", Площадь = " << area() << ", Пириметр = " << perimeter() << std::endl;
+        std::cout << "РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє: С€РёСЂРёРЅР° = " << width << ", РІС‹СЃРѕС‚Р° = " << height 
+                  << ", РџР»РѕС‰Р°РґСЊ = " << area() << ", РџРёСЂРёРјРµС‚СЂ = " << perimeter() << std::endl;
     }
 };
 
@@ -89,8 +89,10 @@ int main() {
 
     for (int i = 0; i < 3; ++i) {
         figures[i]->display();
-        delete figures[i]; // Освобождаем память
+        delete figures[i]; // РћСЃРІРѕР±РѕР¶РґР°РµРј РїР°РјСЏС‚СЊ
     }
 
     return 0;
+}
+
 }
