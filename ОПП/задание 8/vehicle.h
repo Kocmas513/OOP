@@ -4,101 +4,101 @@
 #include <iostream>
 #include <string>
 
-// Абстрактный класс Vehicle (средство передвижения)
+// РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ Vehicle (СЃСЂРµРґСЃС‚РІРѕ РїРµСЂРµРґРІРёР¶РµРЅРёСЏ)
 class Vehicle {
 protected:
-    double speed;        // Скорость
-    double fuelConsumption; // Расход топлива
-    std::string manufacturer; // Наименование производителя
-    int yearOfManufacture;   // Год выпуска
+    double speed;        // РЎРєРѕСЂРѕСЃС‚СЊ
+    double fuelConsumption; // Р Р°СЃС…РѕРґ С‚РѕРїР»РёРІР°
+    std::string manufacturer; // РќР°РёРјРµРЅРѕРІР°РЅРёРµ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ
+    int yearOfManufacture;   // Р“РѕРґ РІС‹РїСѓСЃРєР°
 
 public:
-    // Конструктор с параметрами для общих свойств
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РґР»СЏ РѕР±С‰РёС… СЃРІРѕР№СЃС‚РІ
     Vehicle(double speed, double fuelConsumption, const std::string& manufacturer, int yearOfManufacture);
 
-    // Виртуальный деструктор
+    // Р’РёСЂС‚СѓР°Р»СЊРЅС‹Р№ РґРµСЃС‚СЂСѓРєС‚РѕСЂ
     virtual ~Vehicle();
 
-    // Чисто виртуальный метод для вывода данных
+    // Р§РёСЃС‚Рѕ РІРёСЂС‚СѓР°Р»СЊРЅС‹Р№ РјРµС‚РѕРґ РґР»СЏ РІС‹РІРѕРґР° РґР°РЅРЅС‹С…
     virtual void printData() const = 0;
 
-    // Чисто виртуальный метод для определения срока службы
+    // Р§РёСЃС‚Рѕ РІРёСЂС‚СѓР°Р»СЊРЅС‹Р№ РјРµС‚РѕРґ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ СЃСЂРѕРєР° СЃР»СѓР¶Р±С‹
     virtual int calculateServiceLife() const = 0;
-     //Геттеры для доступа к свойствам
+     //Р“РµС‚С‚РµСЂС‹ РґР»СЏ РґРѕСЃС‚СѓРїР° Рє СЃРІРѕР№СЃС‚РІР°Рј
     double getSpeed() const;
     double getFuelConsumption() const;
     const std::string& getManufacturer() const;
     int getYearOfManufacture() const;
 };
 
-// Класс Airplane (самолет) - производный от Vehicle
+// РљР»Р°СЃСЃ Airplane (СЃР°РјРѕР»РµС‚) - РїСЂРѕРёР·РІРѕРґРЅС‹Р№ РѕС‚ Vehicle
 class Airplane : public Vehicle {
 private:
-    double flightAltitude; // Высота полета
-    double maxFlightRange; // Максимальная дальность полета
-    int numberOfSeats;     // Количество посадочных мест
+    double flightAltitude; // Р’С‹СЃРѕС‚Р° РїРѕР»РµС‚Р°
+    double maxFlightRange; // РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР°Р»СЊРЅРѕСЃС‚СЊ РїРѕР»РµС‚Р°
+    int numberOfSeats;     // РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕСЃР°РґРѕС‡РЅС‹С… РјРµСЃС‚
 public:
-    // Конструктор
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     Airplane(double speed, double fuelConsumption, const std::string& manufacturer, int yearOfManufacture,
              double flightAltitude, double maxFlightRange, int numberOfSeats);
 
-     // Деструктор
+     // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
     ~Airplane() override;
 
-    // Реализация виртуального метода для вывода данных
+    // Р РµР°Р»РёР·Р°С†РёСЏ РІРёСЂС‚СѓР°Р»СЊРЅРѕРіРѕ РјРµС‚РѕРґР° РґР»СЏ РІС‹РІРѕРґР° РґР°РЅРЅС‹С…
     void printData() const override;
 
-    // Реализация виртуального метода для определения срока службы
+    // Р РµР°Р»РёР·Р°С†РёСЏ РІРёСЂС‚СѓР°Р»СЊРЅРѕРіРѕ РјРµС‚РѕРґР° РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ СЃСЂРѕРєР° СЃР»СѓР¶Р±С‹
     int calculateServiceLife() const override;
 
-    //Геттеры для доступа к свойствам
+    //Р“РµС‚С‚РµСЂС‹ РґР»СЏ РґРѕСЃС‚СѓРїР° Рє СЃРІРѕР№СЃС‚РІР°Рј
     double getFlightAltitude() const;
     double getMaxFlightRange() const;
     int getNumberOfSeats() const;
 
 };
 
-// Класс Car (машина) - производный от Vehicle
+// РљР»Р°СЃСЃ Car (РјР°С€РёРЅР°) - РїСЂРѕРёР·РІРѕРґРЅС‹Р№ РѕС‚ Vehicle
 class Car : public Vehicle {
 private:
-    double engineVolume;    // Объем двигателя
+    double engineVolume;    // РћР±СЉРµРј РґРІРёРіР°С‚РµР»СЏ
 public:
-    // Конструктор
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     Car(double speed, double fuelConsumption, const std::string& manufacturer, int yearOfManufacture,
         double engineVolume);
 
-     // Деструктор
+     // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
     ~Car() override;
-    // Реализация виртуального метода для вывода данных
+    // Р РµР°Р»РёР·Р°С†РёСЏ РІРёСЂС‚СѓР°Р»СЊРЅРѕРіРѕ РјРµС‚РѕРґР° РґР»СЏ РІС‹РІРѕРґР° РґР°РЅРЅС‹С…
     void printData() const override;
 
-    // Реализация виртуального метода для определения срока службы
+    // Р РµР°Р»РёР·Р°С†РёСЏ РІРёСЂС‚СѓР°Р»СЊРЅРѕРіРѕ РјРµС‚РѕРґР° РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ СЃСЂРѕРєР° СЃР»СѓР¶Р±С‹
     int calculateServiceLife() const override;
-      //Геттеры для доступа к свойствам
+      //Р“РµС‚С‚РµСЂС‹ РґР»СЏ РґРѕСЃС‚СѓРїР° Рє СЃРІРѕР№СЃС‚РІР°Рј
      double getEngineVolume() const;
 
 };
 
-// Класс Ship (корабль) - производный от Vehicle
+// РљР»Р°СЃСЃ Ship (РєРѕСЂР°Р±Р»СЊ) - РїСЂРѕРёР·РІРѕРґРЅС‹Р№ РѕС‚ Vehicle
 class Ship : public Vehicle {
 private:
-    int numberOfSeats;   // Количество посадочных мест
-    double displacement; // Водоизмещение
+    int numberOfSeats;   // РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕСЃР°РґРѕС‡РЅС‹С… РјРµСЃС‚
+    double displacement; // Р’РѕРґРѕРёР·РјРµС‰РµРЅРёРµ
 
 public:
-    // Конструктор
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     Ship(double speed, double fuelConsumption, const std::string& manufacturer, int yearOfManufacture,
          int numberOfSeats, double displacement);
 
-    // Деструктор
+    // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
     ~Ship() override;
-    // Реализация виртуального метода для вывода данных
+    // Р РµР°Р»РёР·Р°С†РёСЏ РІРёСЂС‚СѓР°Р»СЊРЅРѕРіРѕ РјРµС‚РѕРґР° РґР»СЏ РІС‹РІРѕРґР° РґР°РЅРЅС‹С…
     void printData() const override;
 
-    // Реализация виртуального метода для определения срока службы
+    // Р РµР°Р»РёР·Р°С†РёСЏ РІРёСЂС‚СѓР°Р»СЊРЅРѕРіРѕ РјРµС‚РѕРґР° РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ СЃСЂРѕРєР° СЃР»СѓР¶Р±С‹
     int calculateServiceLife() const override;
 
-       //Геттеры для доступа к свойствам
+       //Р“РµС‚С‚РµСЂС‹ РґР»СЏ РґРѕСЃС‚СѓРїР° Рє СЃРІРѕР№СЃС‚РІР°Рј
       int getNumberOfSeats() const;
       double getDisplacement() const;
 };
