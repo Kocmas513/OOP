@@ -2,26 +2,26 @@
 #include <iostream>
 #include <cmath> 
 
-// Реализация методов базового класса RegularPolygon
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР° RegularPolygon
 RegularPolygon::RegularPolygon(double sideLength) : sideLength(sideLength) {
      if (sideLength <= 0){
-         std::cerr << "Ошибка: Длина стороны должна быть положительной" << std::endl;
+         std::cerr << "РћС€РёР±РєР°: Р”Р»РёРЅР° СЃС‚РѕСЂРѕРЅС‹ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕР№" << std::endl;
          this->sideLength = 1.0;
       }
 }
 RegularPolygon::~RegularPolygon() {
-    std::cout << "Вызван деструктор RegularPolygon.\n";
+    std::cout << "Р’С‹Р·РІР°РЅ РґРµСЃС‚СЂСѓРєС‚РѕСЂ RegularPolygon.\n";
 }
 
 double RegularPolygon::getSideLength() const { return sideLength; }
 
 
-// Реализация методов класса Triangle (правильный треугольник)
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР° Triangle (РїСЂР°РІРёР»СЊРЅС‹Р№ С‚СЂРµСѓРіРѕР»СЊРЅРёРє)
 Triangle::Triangle(double sideLength) : RegularPolygon(sideLength){
-    std::cout << "Вызван конструктор Triangle.\n";
+    std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Triangle.\n";
 }
 Triangle::~Triangle() {
-    std::cout << "Вызван деструктор Triangle.\n";
+    std::cout << "Р’С‹Р·РІР°РЅ РґРµСЃС‚СЂСѓРєС‚РѕСЂ Triangle.\n";
 }
 
 double Triangle::calculatePerimeter() const {
@@ -33,19 +33,19 @@ double Triangle::calculateArea() const {
      return (std::sqrt(3) / 4) * side * side;
 }
 void Triangle::printInfo() const{
-     std::cout << "Тип: Правильный Треугольник\n";
-      std::cout << "Длина стороны: " << getSideLength() << "\n";
-     std::cout << "Периметр: " << calculatePerimeter() << "\n";
-     std::cout << "Площадь: " << calculateArea() << "\n";
+     std::cout << "РўРёРї: РџСЂР°РІРёР»СЊРЅС‹Р№ РўСЂРµСѓРіРѕР»СЊРЅРёРє\n";
+      std::cout << "Р”Р»РёРЅР° СЃС‚РѕСЂРѕРЅС‹: " << getSideLength() << "\n";
+     std::cout << "РџРµСЂРёРјРµС‚СЂ: " << calculatePerimeter() << "\n";
+     std::cout << "РџР»РѕС‰Р°РґСЊ: " << calculateArea() << "\n";
 }
 
 
-// Реализация методов класса Square (квадрат)
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР° Square (РєРІР°РґСЂР°С‚)
 Square::Square(double sideLength) : RegularPolygon(sideLength) {
-      std::cout << "Вызван конструктор Square.\n";
+      std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Square.\n";
 }
 Square::~Square() {
-    std::cout << "Вызван деструктор Square.\n";
+    std::cout << "Р’С‹Р·РІР°РЅ РґРµСЃС‚СЂСѓРєС‚РѕСЂ Square.\n";
 }
 
 double Square::calculatePerimeter() const {
@@ -57,18 +57,18 @@ double Square::calculateArea() const {
     return side * side;
 }
 void Square::printInfo() const {
-    std::cout << "Тип: Квадрат\n";
-    std::cout << "Длина стороны: " << getSideLength() << "\n";
-    std::cout << "Периметр: " << calculatePerimeter() << "\n";
-     std::cout << "Площадь: " << calculateArea() << "\n";
+    std::cout << "РўРёРї: РљРІР°РґСЂР°С‚\n";
+    std::cout << "Р”Р»РёРЅР° СЃС‚РѕСЂРѕРЅС‹: " << getSideLength() << "\n";
+    std::cout << "РџРµСЂРёРјРµС‚СЂ: " << calculatePerimeter() << "\n";
+     std::cout << "РџР»РѕС‰Р°РґСЊ: " << calculateArea() << "\n";
 }
 
-// Реализация методов класса Pentagon (правильный пятиугольник)
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР° Pentagon (РїСЂР°РІРёР»СЊРЅС‹Р№ РїСЏС‚РёСѓРіРѕР»СЊРЅРёРє)
 Pentagon::Pentagon(double sideLength) : RegularPolygon(sideLength) {
-     std::cout << "Вызван конструктор Pentagon.\n";
+     std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Pentagon.\n";
 }
 Pentagon::~Pentagon() {
-    std::cout << "Вызван деструктор Pentagon.\n";
+    std::cout << "Р’С‹Р·РІР°РЅ РґРµСЃС‚СЂСѓРєС‚РѕСЂ Pentagon.\n";
 }
 
 double Pentagon::calculatePerimeter() const {
@@ -80,29 +80,28 @@ double Pentagon::calculateArea() const {
     return 0.25 * std::sqrt(5 * (5 + 2 * std::sqrt(5))) * side * side;
 }
 void Pentagon::printInfo() const{
-     std::cout << "Тип: Правильный Пятиугольник\n";
-     std::cout << "Длина стороны: " << getSideLength() << "\n";
-     std::cout << "Периметр: " << calculatePerimeter() << "\n";
-     std::cout << "Площадь: " << calculateArea() << "\n";
+     std::cout << "РўРёРї: РџСЂР°РІРёР»СЊРЅС‹Р№ РџСЏС‚РёСѓРіРѕР»СЊРЅРёРє\n";
+     std::cout << "Р”Р»РёРЅР° СЃС‚РѕСЂРѕРЅС‹: " << getSideLength() << "\n";
+     std::cout << "РџРµСЂРёРјРµС‚СЂ: " << calculatePerimeter() << "\n";
+     std::cout << "РџР»РѕС‰Р°РґСЊ: " << calculateArea() << "\n";
 }
 
 int main() {
-    setlocale(LC_ALL, "Russian");
-    // Создание объектов разных классов
-    std::cout << "Создание объектов:\n";
+    // РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚РѕРІ СЂР°Р·РЅС‹С… РєР»Р°СЃСЃРѕРІ
+    std::cout << "РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚РѕРІ:\n";
     Triangle triangle(5.0);
     Square square(4.0);
     Pentagon pentagon(6.0);
 
-    // Вывод информации о каждом объекте
-    std::cout << "\nИнформация о треугольнике:\n";
+    // Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РєР°Р¶РґРѕРј РѕР±СЉРµРєС‚Рµ
+    std::cout << "\nРРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚СЂРµСѓРіРѕР»СЊРЅРёРєРµ:\n";
     triangle.printInfo();
 
 
-    std::cout << "\nИнформация о квадрате:\n";
+    std::cout << "\nРРЅС„РѕСЂРјР°С†РёСЏ Рѕ РєРІР°РґСЂР°С‚Рµ:\n";
     square.printInfo();
 
-    std::cout << "\nИнформация о пятиугольнике:\n";
+    std::cout << "\nРРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїСЏС‚РёСѓРіРѕР»СЊРЅРёРєРµ:\n";
    pentagon.printInfo();
 
 
