@@ -1,16 +1,16 @@
 #include "triangle.h"
-#include <cmath>
-#include <iomanip>
+#include <cmath> // Р”Р»СЏ РјР°С‚РµРјР°С‚РёС‡РµСЃРєРёС… С„СѓРЅРєС†РёР№ sqrt Рё abs
+#include <iomanip> // Р”Р»СЏ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёСЏ РІС‹РІРѕРґР°
 
-// Реализация методов базового класса Triangle
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР° Triangle
 Triangle::Triangle() : sideA(1.0), sideB(1.0), sideC(1.0) {
-    std::cout << "Вызван конструктор по умолчанию базового класса Triangle.\n";
+    std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР° Triangle.\n";
 }
 
 Triangle::Triangle(double a, double b, double c) : sideA(a), sideB(b), sideC(c) {
-      std::cout << "Вызван конструктор с параметрами базового класса Triangle.\n";
+      std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР° Triangle.\n";
       if (!isValidTriangle()) {
-            std::cerr << "Ошибка: Невозможно создать треугольник с такими сторонами." << std::endl;
+            std::cerr << "РћС€РёР±РєР°: РќРµРІРѕР·РјРѕР¶РЅРѕ СЃРѕР·РґР°С‚СЊ С‚СЂРµСѓРіРѕР»СЊРЅРёРє СЃ С‚Р°РєРёРјРё СЃС‚РѕСЂРѕРЅР°РјРё." << std::endl;
              sideA = 1.0;
              sideB = 1.0;
              sideC = 1.0;
@@ -19,7 +19,7 @@ Triangle::Triangle(double a, double b, double c) : sideA(a), sideB(b), sideC(c) 
 }
 
 Triangle::~Triangle() {
-    std::cout << "Вызван деструктор базового класса Triangle.\n";
+    std::cout << "Р’С‹Р·РІР°РЅ РґРµСЃС‚СЂСѓРєС‚РѕСЂ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР° Triangle.\n";
 }
 
 
@@ -27,7 +27,7 @@ bool Triangle::isValidTriangle() const {
     return (sideA + sideB > sideC) &&
            (sideA + sideC > sideB) &&
            (sideB + sideC > sideA) &&
-           (sideA > 0 && sideB > 0 && sideC > 0); // Проверка на положительность
+           (sideA > 0 && sideB > 0 && sideC > 0); // РџСЂРѕРІРµСЂРєР° РЅР° РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ
 }
 double Triangle::calculatePerimeter() const {
     return sideA + sideB + sideC;
@@ -43,14 +43,14 @@ double Triangle::calculateArea() const {
 
 void Triangle::printTriangleInfo() const {
      if (!isValidTriangle()){
-          std::cout << "Треугольник с некорректными сторонами." << std::endl;
+          std::cout << "РўСЂРµСѓРіРѕР»СЊРЅРёРє СЃ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹РјРё СЃС‚РѕСЂРѕРЅР°РјРё." << std::endl;
          return;
         }
-    std::cout << "Длина стороны A: " << sideA << std::endl;
-    std::cout << "Длина стороны B: " << sideB << std::endl;
-    std::cout << "Длина стороны C: " << sideC << std::endl;
-    std::cout << "Периметр: " << calculatePerimeter() << std::endl;
-    std::cout << "Площадь: " << calculateArea() << std::endl;
+    std::cout << "Р”Р»РёРЅР° СЃС‚РѕСЂРѕРЅС‹ A: " << sideA << std::endl;
+    std::cout << "Р”Р»РёРЅР° СЃС‚РѕСЂРѕРЅС‹ B: " << sideB << std::endl;
+    std::cout << "Р”Р»РёРЅР° СЃС‚РѕСЂРѕРЅС‹ C: " << sideC << std::endl;
+    std::cout << "РџРµСЂРёРјРµС‚СЂ: " << calculatePerimeter() << std::endl;
+    std::cout << "РџР»РѕС‰Р°РґСЊ: " << calculateArea() << std::endl;
 }
 
  double Triangle::getSideA() const { return sideA; }
@@ -58,17 +58,17 @@ void Triangle::printTriangleInfo() const {
  double Triangle::getSideC() const { return sideC; }
 
 
-// Реализация методов производного класса TriangleWithHeights
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ РїСЂРѕРёР·РІРѕРґРЅРѕРіРѕ РєР»Р°СЃСЃР° TriangleWithHeights
 TriangleWithHeights::TriangleWithHeights() : Triangle() {
-  std::cout << "Вызван конструктор по умолчанию производного класса TriangleWithHeights.\n";
+  std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РїСЂРѕРёР·РІРѕРґРЅРѕРіРѕ РєР»Р°СЃСЃР° TriangleWithHeights.\n";
 }
 
 TriangleWithHeights::TriangleWithHeights(double a, double b, double c) : Triangle(a,b,c) {
-    std::cout << "Вызван конструктор с параметрами производного класса TriangleWithHeights.\n";
+    std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РїСЂРѕРёР·РІРѕРґРЅРѕРіРѕ РєР»Р°СЃСЃР° TriangleWithHeights.\n";
 }
 
 TriangleWithHeights::~TriangleWithHeights() {
-     std::cout << "Вызван деструктор производного класса TriangleWithHeights.\n";
+     std::cout << "Р’С‹Р·РІР°РЅ РґРµСЃС‚СЂСѓРєС‚РѕСЂ РїСЂРѕРёР·РІРѕРґРЅРѕРіРѕ РєР»Р°СЃСЃР° TriangleWithHeights.\n";
 }
 
 void TriangleWithHeights::calculateHeights(double& heightA, double& heightB, double& heightC) const {
@@ -94,38 +94,38 @@ void TriangleWithHeights::printTriangleInfo() const {
    double heightA, heightB, heightC;
   calculateHeights(heightA, heightB, heightC);
     std::cout << std::fixed << std::setprecision(2);
-    std::cout << "Высота к стороне A: " << heightA << std::endl;
-    std::cout << "Высота к стороне B: " << heightB << std::endl;
-    std::cout << "Высота к стороне C: " << heightC << std::endl;
+    std::cout << "Р’С‹СЃРѕС‚Р° Рє СЃС‚РѕСЂРѕРЅРµ A: " << heightA << std::endl;
+    std::cout << "Р’С‹СЃРѕС‚Р° Рє СЃС‚РѕСЂРѕРЅРµ B: " << heightB << std::endl;
+    std::cout << "Р’С‹СЃРѕС‚Р° Рє СЃС‚РѕСЂРѕРЅРµ C: " << heightC << std::endl;
 
 }
 
 
 int main() {
-    setlocale(LC_ALL, "Russian");
-    // Создание объекта базового класса Triangle
-    std::cout << "Создание объекта t1 базового класса Triangle:\n";
+    // РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР° Triangle
+    std::cout << "РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° t1 Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР° Triangle:\n";
     Triangle t1;
      t1.printTriangleInfo();
 
-    std::cout << "\nСоздание объекта t2 базового класса Triangle с параметрами:\n";
+    std::cout << "\nРЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° t2 Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР° Triangle СЃ РїР°СЂР°РјРµС‚СЂР°РјРё:\n";
     Triangle t2(3.0, 4.0, 5.0);
      t2.printTriangleInfo();
 
-    std::cout << "\nСоздание объекта t3 базового класса Triangle с некорректными сторонами:\n";
+    std::cout << "\nРЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° t3 Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР° Triangle СЃ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹РјРё СЃС‚РѕСЂРѕРЅР°РјРё:\n";
     Triangle t3(1.0, 2.0, 5.0);
      t3.printTriangleInfo();
 
-    // Создание объекта производного класса TriangleWithHeights
-      std::cout << "\nСоздание объекта t4 производного класса TriangleWithHeights:\n";
+    // РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° РїСЂРѕРёР·РІРѕРґРЅРѕРіРѕ РєР»Р°СЃСЃР° TriangleWithHeights
+      std::cout << "\nРЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° t4 РїСЂРѕРёР·РІРѕРґРЅРѕРіРѕ РєР»Р°СЃСЃР° TriangleWithHeights:\n";
     TriangleWithHeights t4;
     t4.printTriangleInfo();
-    std::cout << "\nСоздание объекта t5 производного класса TriangleWithHeights с параметрами:\n";
+    std::cout << "\nРЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° t5 РїСЂРѕРёР·РІРѕРґРЅРѕРіРѕ РєР»Р°СЃСЃР° TriangleWithHeights СЃ РїР°СЂР°РјРµС‚СЂР°РјРё:\n";
     TriangleWithHeights t5(5.0, 12.0, 13.0);
     t5.printTriangleInfo();
-    std::cout << "\nСоздание объекта t6 производного класса TriangleWithHeights с некорректными сторонами:\n";
+    std::cout << "\nРЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° t6 РїСЂРѕРёР·РІРѕРґРЅРѕРіРѕ РєР»Р°СЃСЃР° TriangleWithHeights СЃ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹РјРё СЃС‚РѕСЂРѕРЅР°РјРё:\n";
     TriangleWithHeights t6(1.0,2.0, 5.0);
     t6.printTriangleInfo();
 
     return 0;
 }
+
