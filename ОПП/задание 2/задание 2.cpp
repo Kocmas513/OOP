@@ -5,39 +5,39 @@
 #include <iomanip>
 #include <algorithm>
 
-// Структура для хранения результатов экзаменов студента
+// РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ СЌРєР·Р°РјРµРЅРѕРІ СЃС‚СѓРґРµРЅС‚Р°
 struct ExamResult {
-    std::string lastName;     // Фамилия
-    std::string firstName;    // Имя
-    std::string groupNumber;  // Номер группы
-    std::string subjects[5];  // Названия предметов
-    int scores[5];          // Оценки по предметам
+    std::string lastName;     // Р¤Р°РјРёР»РёСЏ
+    std::string firstName;    // РРјСЏ
+    std::string groupNumber;  // РќРѕРјРµСЂ РіСЂСѓРїРїС‹
+    std::string subjects[5];  // РќР°Р·РІР°РЅРёСЏ РїСЂРµРґРјРµС‚РѕРІ
+    int scores[5];          // РћС†РµРЅРєРё РїРѕ РїСЂРµРґРјРµС‚Р°Рј
 };
 
-// Прототипы функций (объявления перед использованием)
-void addStudent(std::vector<ExamResult> &students); // Добавление студента
-void printAverageScoreByGroup(const std::vector<ExamResult> &students); // Вывод среднего балла по группе
-void printUnsatisfactoryStudents(const std::vector<ExamResult> &students); // Вывод неуспевающих студентов
-void printExcellentStudents(const std::vector<ExamResult> &students); // Вывод отличников
-double calculateAverageScore(const int scores[5]); // Расчет среднего балла
-bool isValidScore(int score); // Проверка валидности оценки
+// РџСЂРѕС‚РѕС‚РёРїС‹ С„СѓРЅРєС†РёР№ (РѕР±СЉСЏРІР»РµРЅРёСЏ РїРµСЂРµРґ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј)
+void addStudent(std::vector<ExamResult> &students); // Р”РѕР±Р°РІР»РµРЅРёРµ СЃС‚СѓРґРµРЅС‚Р°
+void printAverageScoreByGroup(const std::vector<ExamResult> &students); // Р’С‹РІРѕРґ СЃСЂРµРґРЅРµРіРѕ Р±Р°Р»Р»Р° РїРѕ РіСЂСѓРїРїРµ
+void printUnsatisfactoryStudents(const std::vector<ExamResult> &students); // Р’С‹РІРѕРґ РЅРµСѓСЃРїРµРІР°СЋС‰РёС… СЃС‚СѓРґРµРЅС‚РѕРІ
+void printExcellentStudents(const std::vector<ExamResult> &students); // Р’С‹РІРѕРґ РѕС‚Р»РёС‡РЅРёРєРѕРІ
+double calculateAverageScore(const int scores[5]); // Р Р°СЃС‡РµС‚ СЃСЂРµРґРЅРµРіРѕ Р±Р°Р»Р»Р°
+bool isValidScore(int score); // РџСЂРѕРІРµСЂРєР° РІР°Р»РёРґРЅРѕСЃС‚Рё РѕС†РµРЅРєРё
 
 
 int main() {
 setlocale(LC_ALL, "Russian");
-    std::vector<ExamResult> students; // Динамический массив (вектор) структур
+    std::vector<ExamResult> students; // Р”РёРЅР°РјРёС‡РµСЃРєРёР№ РјР°СЃСЃРёРІ (РІРµРєС‚РѕСЂ) СЃС‚СЂСѓРєС‚СѓСЂ
 
     while(true) {
-        std::cout << "\nМеню:\n";
-        std::cout << "1. Добавить результаты студента\n";
-        std::cout << "2. Вывести средний балл по группе\n";
-        std::cout << "3. Вывести список неуспевающих студентов\n";
-        std::cout << "4. Вывести список отличников\n";
-        std::cout << "0. Выход\n";
-        std::cout << "Выберите действие: ";
+        std::cout << "\nРњРµРЅСЋ:\n";
+        std::cout << "1. Р”РѕР±Р°РІРёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹ СЃС‚СѓРґРµРЅС‚Р°\n";
+        std::cout << "2. Р’С‹РІРµСЃС‚Рё СЃСЂРµРґРЅРёР№ Р±Р°Р»Р» РїРѕ РіСЂСѓРїРїРµ\n";
+        std::cout << "3. Р’С‹РІРµСЃС‚Рё СЃРїРёСЃРѕРє РЅРµСѓСЃРїРµРІР°СЋС‰РёС… СЃС‚СѓРґРµРЅС‚РѕРІ\n";
+        std::cout << "4. Р’С‹РІРµСЃС‚Рё СЃРїРёСЃРѕРє РѕС‚Р»РёС‡РЅРёРєРѕРІ\n";
+        std::cout << "0. Р’С‹С…РѕРґ\n";
+        std::cout << "Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ: ";
         int choice;
         std::cin >> choice;
-        std::cin.ignore(); // Очистка буфера ввода
+        std::cin.ignore(); // РћС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° РІРІРѕРґР°
 
          switch (choice) {
             case 1:
@@ -53,11 +53,11 @@ setlocale(LC_ALL, "Russian");
                 printExcellentStudents(students);
                 break;
             case 0:
-               std::cout << "Выход из программы.\n";
+               std::cout << "Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹.\n";
                return 0;
 
             default:
-                std::cout << "Неверный выбор, попробуйте еще раз.\n";
+                std::cout << "РќРµРІРµСЂРЅС‹Р№ РІС‹Р±РѕСЂ, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.\n";
         }
     }
 
@@ -66,40 +66,40 @@ setlocale(LC_ALL, "Russian");
 
 
 
-// Функция для добавления результатов нового студента
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РЅРѕРІРѕРіРѕ СЃС‚СѓРґРµРЅС‚Р°
 void addStudent(std::vector<ExamResult> &students) {
     ExamResult newStudent;
 
-    std::cout << "Введите фамилию: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ: ";
     std::getline(std::cin, newStudent.lastName);
 
-    std::cout << "Введите имя: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ: ";
     std::getline(std::cin, newStudent.firstName);
 
-    std::cout << "Введите номер группы: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РіСЂСѓРїРїС‹: ";
     std::getline(std::cin, newStudent.groupNumber);
 
     for(int i=0; i<5; i++) {
-        std::cout << "Введите название предмета " << i+1 << ": ";
+        std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РїСЂРµРґРјРµС‚Р° " << i+1 << ": ";
         std::getline(std::cin, newStudent.subjects[i]);
 
         bool valid_score = false;
         while(!valid_score){
-            std::cout << "Введите оценку по " << newStudent.subjects[i] << ": ";
+            std::cout << "Р’РІРµРґРёС‚Рµ РѕС†РµРЅРєСѓ РїРѕ " << newStudent.subjects[i] << ": ";
             std::string score_str;
             std::getline(std::cin, score_str);
             std::stringstream ss(score_str);
             if(ss >> newStudent.scores[i] && ss.eof() && isValidScore(newStudent.scores[i]) ){
                 valid_score = true;
             } else {
-                 std::cout << "Неверная оценка. Оценка должна быть целым числом (2-5)" << std::endl;
+                 std::cout << "РќРµРІРµСЂРЅР°СЏ РѕС†РµРЅРєР°. РћС†РµРЅРєР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ С†РµР»С‹Рј С‡РёСЃР»РѕРј (2-5)" << std::endl;
              }
         }
     }
-    students.push_back(newStudent); // Добавление структуры в массив
+    students.push_back(newStudent); // Р”РѕР±Р°РІР»РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РІ РјР°СЃСЃРёРІ
 }
 
-// Функция для расчета среднего балла
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЂР°СЃС‡РµС‚Р° СЃСЂРµРґРЅРµРіРѕ Р±Р°Р»Р»Р°
 double calculateAverageScore(const int scores[5]) {
      double sum = 0.0;
      for (int i = 0; i < 5; i++) {
@@ -108,21 +108,21 @@ double calculateAverageScore(const int scores[5]) {
     return sum / 5.0;
 }
 
-// Функция для проверки валидности оценки (от 2 до 5)
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїСЂРѕРІРµСЂРєРё РІР°Р»РёРґРЅРѕСЃС‚Рё РѕС†РµРЅРєРё (РѕС‚ 2 РґРѕ 5)
 bool isValidScore(int score){
   return score >= 2 && score <= 5;
 }
 
 
-// Функция для вывода среднего балла по группе
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° СЃСЂРµРґРЅРµРіРѕ Р±Р°Р»Р»Р° РїРѕ РіСЂСѓРїРїРµ
 void printAverageScoreByGroup(const std::vector<ExamResult> &students) {
     if (students.empty()) {
-        std::cout << "Нет данных о студентах.\n";
+        std::cout << "РќРµС‚ РґР°РЅРЅС‹С… Рѕ СЃС‚СѓРґРµРЅС‚Р°С….\n";
         return;
     }
 
    std::string targetGroup;
-    std::cout << "Введите номер группы для расчета среднего балла: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РіСЂСѓРїРїС‹ РґР»СЏ СЂР°СЃС‡РµС‚Р° СЃСЂРµРґРЅРµРіРѕ Р±Р°Р»Р»Р°: ";
     std::getline(std::cin, targetGroup);
 
    double totalScore = 0.0;
@@ -137,20 +137,20 @@ void printAverageScoreByGroup(const std::vector<ExamResult> &students) {
 
     if (studentCount > 0) {
         double average = totalScore / studentCount;
-         std::cout << std::fixed << std::setprecision(2) << "Средний балл для группы " << targetGroup << ": " << average << std::endl;
+         std::cout << std::fixed << std::setprecision(2) << "РЎСЂРµРґРЅРёР№ Р±Р°Р»Р» РґР»СЏ РіСЂСѓРїРїС‹ " << targetGroup << ": " << average << std::endl;
      } else {
-          std::cout << "Студенты из группы " << targetGroup << " не найдены.\n" << std::endl;
+          std::cout << "РЎС‚СѓРґРµРЅС‚С‹ РёР· РіСЂСѓРїРїС‹ " << targetGroup << " РЅРµ РЅР°Р№РґРµРЅС‹.\n" << std::endl;
       }
 }
 
 
-// Функция для вывода списка неуспевающих студентов
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° СЃРїРёСЃРєР° РЅРµСѓСЃРїРµРІР°СЋС‰РёС… СЃС‚СѓРґРµРЅС‚РѕРІ
 void printUnsatisfactoryStudents(const std::vector<ExamResult> &students) {
     if (students.empty()) {
-        std::cout << "Нет данных о студентах.\n";
+        std::cout << "РќРµС‚ РґР°РЅРЅС‹С… Рѕ СЃС‚СѓРґРµРЅС‚Р°С….\n";
         return;
     }
-      std::cout << "Неуспевающие студенты:\n";
+      std::cout << "РќРµСѓСЃРїРµРІР°СЋС‰РёРµ СЃС‚СѓРґРµРЅС‚С‹:\n";
       bool foundUnsatisfactory = false;
 
    std::vector<ExamResult> unsatStudents = students;
@@ -172,7 +172,7 @@ void printUnsatisfactoryStudents(const std::vector<ExamResult> &students) {
 
         if (hasUnsatScore) {
            foundUnsatisfactory = true;
-            std::cout << student.lastName << " " << student.firstName << " (Группа: " << student.groupNumber << ") - ";
+            std::cout << student.lastName << " " << student.firstName << " (Р“СЂСѓРїРїР°: " << student.groupNumber << ") - ";
             for(size_t i = 0; i < unsatSubjects.size(); ++i) {
              std::cout << unsatSubjects[i];
              if(i < unsatSubjects.size()-1){
@@ -183,20 +183,20 @@ void printUnsatisfactoryStudents(const std::vector<ExamResult> &students) {
          }
     }
       if (!foundUnsatisfactory) {
-        std::cout << "Неуспевающие студенты не найдены.\n";
+        std::cout << "РќРµСѓСЃРїРµРІР°СЋС‰РёРµ СЃС‚СѓРґРµРЅС‚С‹ РЅРµ РЅР°Р№РґРµРЅС‹.\n";
     }
 }
 
 
-// Функция для вывода списка отличников
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° СЃРїРёСЃРєР° РѕС‚Р»РёС‡РЅРёРєРѕРІ
 void printExcellentStudents(const std::vector<ExamResult> &students) {
     if (students.empty()) {
-        std::cout << "Нет данных о студентах.\n";
+        std::cout << "РќРµС‚ РґР°РЅРЅС‹С… Рѕ СЃС‚СѓРґРµРЅС‚Р°С….\n";
         return;
     }
 
 
-    std::cout << "Отличники:\n";
+    std::cout << "РћС‚Р»РёС‡РЅРёРєРё:\n";
     int excellentCount = 0;
      for (const auto& student : students) {
         bool isExcellent = true;
@@ -208,19 +208,19 @@ void printExcellentStudents(const std::vector<ExamResult> &students) {
         }
           if (isExcellent) {
             excellentCount++;
-             std::cout << student.lastName << " " << student.firstName << " (Группа: " << student.groupNumber << ")\n";
+             std::cout << student.lastName << " " << student.firstName << " (Р“СЂСѓРїРїР°: " << student.groupNumber << ")\n";
           }
      }
 
     if (students.size() > 0) {
       double percentage = static_cast<double>(excellentCount) / students.size() * 100;
-     std::cout << std::fixed << std::setprecision(2) << "Процент отличников: " << percentage << "%\n";
+     std::cout << std::fixed << std::setprecision(2) << "РџСЂРѕС†РµРЅС‚ РѕС‚Р»РёС‡РЅРёРєРѕРІ: " << percentage << "%\n";
 
     } else{
-          std::cout << "Процент отличников: 0%\n";
+          std::cout << "РџСЂРѕС†РµРЅС‚ РѕС‚Р»РёС‡РЅРёРєРѕРІ: 0%\n";
      }
     if(excellentCount == 0) {
-      std::cout << "Отличники не найдены.\n";
+      std::cout << "РћС‚Р»РёС‡РЅРёРєРё РЅРµ РЅР°Р№РґРµРЅС‹.\n";
    }
 
 }
