@@ -1,6 +1,6 @@
 #include "triangle.h"
-#include <cmath> // Для математических функций sqrt и abs
-#include <iomanip> // Для форматирования вывода
+#include <cmath> 
+#include <iomanip> 
 
 // Реализация методов базового класса Triangle
 Triangle::Triangle() : sideA(1.0), sideB(1.0), sideC(1.0) {
