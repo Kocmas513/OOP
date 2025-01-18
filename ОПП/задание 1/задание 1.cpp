@@ -3,19 +3,17 @@
 #include <vector>
 #include <iomanip>
 
-
-// Прототип функции для вычисления длины стороны треугольника
+// РџСЂРѕС‚РѕС‚РёРї С„СѓРЅРєС†РёРё РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РґР»РёРЅС‹ СЃС‚РѕСЂРѕРЅС‹ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
 double calculateSideLength(double x1, double y1, double x2, double y2);
 
-// Прототип функции для вычисления периметра треугольника
+// РџСЂРѕС‚РѕС‚РёРї С„СѓРЅРєС†РёРё РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РїРµСЂРёРјРµС‚СЂР° С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
 double calculateTrianglePerimeter(double x1, double y1, double x2, double y2, double x3, double y3);
 
 int main() {
-    setlocale(LC_ALL, "Russian");
     std::vector<double> perimeters;
     for (int i = 1; i <= 3; i++) {
         double x1, y1, x2, y2, x3, y3;
-        std::cout << "Введите Координаты треугольника " << i << " (x1 y1 x2 y2 x3 y3): ";
+        std::cout << "Р’РІРµРґРёС‚Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР° " << i << " (x1 y1 x2 y2 x3 y3): ";
         std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
 
         double perimeter = calculateTrianglePerimeter(x1, y1, x2, y2, x3, y3);
@@ -30,24 +28,23 @@ int main() {
     double averagePerimeter = totalPerimeter / perimeters.size();
 
 
-    std::cout << std::fixed << std::setprecision(2) << "среднее арифметическое периметров: " << averagePerimeter << std::endl;
+    std::cout << std::fixed << std::setprecision(2) << "СЃСЂРµРґРЅРµРµ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ РїРµСЂРёРјРµС‚СЂРѕРІ: " << averagePerimeter << std::endl;
 
 
     return 0;
 }
 
-// Определение функции для вычисления длины стороны треугольника
+// РћРїСЂРµРґРµР»РµРЅРёРµ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РґР»РёРЅС‹ СЃС‚РѕСЂРѕРЅС‹ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
 double calculateSideLength(double x1, double y1, double x2, double y2) {
     return std::sqrt(std::pow(x2 - x1, 2) + std::pow(y2 - y1, 2));
 }
 
 
-// Определение функции для вычисления периметра треугольника
+// РћРїСЂРµРґРµР»РµРЅРёРµ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РїРµСЂРёРјРµС‚СЂР° С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
 double calculateTrianglePerimeter(double x1, double y1, double x2, double y2, double x3, double y3) {
     double side1 = calculateSideLength(x1, y1, x2, y2);
     double side2 = calculateSideLength(x2, y2, x3, y3);
     double side3 = calculateSideLength(x3, y3, x1, y1);
     return side1 + side2 + side3;
 }
-
 
