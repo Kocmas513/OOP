@@ -1,14 +1,14 @@
 #include "vehicle.h"
 #include <iostream>
-#include <iomanip> 
+#include <iomanip>
 
-// Реализация методов базового класса Vehicle
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР° Vehicle
 Vehicle::Vehicle(double speed, double fuelConsumption, const std::string& manufacturer, int yearOfManufacture)
     : speed(speed), fuelConsumption(fuelConsumption), manufacturer(manufacturer), yearOfManufacture(yearOfManufacture) {}
 
 
 Vehicle::~Vehicle() {
-    std::cout << "Вызван деструктор Vehicle.\n";
+    std::cout << "Р’С‹Р·РІР°РЅ РґРµСЃС‚СЂСѓРєС‚РѕСЂ Vehicle.\n";
 }
 
 double Vehicle::getSpeed() const { return speed; }
@@ -17,28 +17,28 @@ const std::string& Vehicle::getManufacturer() const { return manufacturer; }
 int Vehicle::getYearOfManufacture() const { return yearOfManufacture; }
 
 
-// Реализация методов класса Airplane
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР° Airplane
 Airplane::Airplane(double speed, double fuelConsumption, const std::string& manufacturer, int yearOfManufacture,
                    double flightAltitude, double maxFlightRange, int numberOfSeats)
     : Vehicle(speed, fuelConsumption, manufacturer, yearOfManufacture),
       flightAltitude(flightAltitude), maxFlightRange(maxFlightRange), numberOfSeats(numberOfSeats) {
-        std::cout << "Вызван конструктор Airplane.\n";
+        std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Airplane.\n";
     }
 Airplane::~Airplane() {
-    std::cout << "Вызван деструктор Airplane.\n";
+    std::cout << "Р’С‹Р·РІР°РЅ РґРµСЃС‚СЂСѓРєС‚РѕСЂ Airplane.\n";
 }
 void Airplane::printData() const {
-    std::cout << "Тип: Самолет\n";
-    std::cout << "Скорость: " << speed << " км/ч\n";
-    std::cout << "Расход топлива: " << fuelConsumption << " л/100км\n";
-    std::cout << "Производитель: " << manufacturer << "\n";
-    std::cout << "Год выпуска: " << yearOfManufacture << "\n";
-    std::cout << "Высота полета: " << flightAltitude << " м\n";
-    std::cout << "Макс. дальность полета: " << maxFlightRange << " км\n";
-    std::cout << "Кол-во посадочных мест: " << numberOfSeats << "\n";
+    std::cout << "РўРёРї: РЎР°РјРѕР»РµС‚\n";
+    std::cout << "РЎРєРѕСЂРѕСЃС‚СЊ: " << speed << " РєРј/С‡\n";
+    std::cout << "Р Р°СЃС…РѕРґ С‚РѕРїР»РёРІР°: " << fuelConsumption << " Р»/100РєРј\n";
+    std::cout << "РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЊ: " << manufacturer << "\n";
+    std::cout << "Р“РѕРґ РІС‹РїСѓСЃРєР°: " << yearOfManufacture << "\n";
+    std::cout << "Р’С‹СЃРѕС‚Р° РїРѕР»РµС‚Р°: " << flightAltitude << " Рј\n";
+    std::cout << "РњР°РєСЃ. РґР°Р»СЊРЅРѕСЃС‚СЊ РїРѕР»РµС‚Р°: " << maxFlightRange << " РєРј\n";
+    std::cout << "РљРѕР»-РІРѕ РїРѕСЃР°РґРѕС‡РЅС‹С… РјРµСЃС‚: " << numberOfSeats << "\n";
 }
 int Airplane::calculateServiceLife() const {
-    // Пример расчета срока службы для самолета
+    // РџСЂРёРјРµСЂ СЂР°СЃС‡РµС‚Р° СЃСЂРѕРєР° СЃР»СѓР¶Р±С‹ РґР»СЏ СЃР°РјРѕР»РµС‚Р°
     return 30 - (2024 - getYearOfManufacture());
 }
 double Airplane::getFlightAltitude() const { return flightAltitude; }
@@ -47,57 +47,57 @@ int Airplane::getNumberOfSeats() const { return numberOfSeats; }
 
 
 
-// Реализация методов класса Car
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР° Car
 Car::Car(double speed, double fuelConsumption, const std::string& manufacturer, int yearOfManufacture,
          double engineVolume)
     : Vehicle(speed, fuelConsumption, manufacturer, yearOfManufacture), engineVolume(engineVolume) {
-        std::cout << "Вызван конструктор Car.\n";
+        std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Car.\n";
     }
 Car::~Car() {
-    std::cout << "Вызван деструктор Car.\n";
+    std::cout << "Р’С‹Р·РІР°РЅ РґРµСЃС‚СЂСѓРєС‚РѕСЂ Car.\n";
 }
 
 void Car::printData() const {
-    std::cout << "Тип: Машина\n";
-    std::cout << "Скорость: " << speed << " км/ч\n";
-    std::cout << "Расход топлива: " << fuelConsumption << " л/100км\n";
-    std::cout << "Производитель: " << manufacturer << "\n";
-    std::cout << "Год выпуска: " << yearOfManufacture << "\n";
-    std::cout << "Объем двигателя: " << engineVolume << " л\n";
+    std::cout << "РўРёРї: РњР°С€РёРЅР°\n";
+    std::cout << "РЎРєРѕСЂРѕСЃС‚СЊ: " << speed << " РєРј/С‡\n";
+    std::cout << "Р Р°СЃС…РѕРґ С‚РѕРїР»РёРІР°: " << fuelConsumption << " Р»/100РєРј\n";
+    std::cout << "РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЊ: " << manufacturer << "\n";
+    std::cout << "Р“РѕРґ РІС‹РїСѓСЃРєР°: " << yearOfManufacture << "\n";
+    std::cout << "РћР±СЉРµРј РґРІРёРіР°С‚РµР»СЏ: " << engineVolume << " Р»\n";
 }
 
 int Car::calculateServiceLife() const {
-    // Пример расчета срока службы для машины
+    // РџСЂРёРјРµСЂ СЂР°СЃС‡РµС‚Р° СЃСЂРѕРєР° СЃР»СѓР¶Р±С‹ РґР»СЏ РјР°С€РёРЅС‹
       return 15 - (2024 - getYearOfManufacture());
 }
 
  double Car::getEngineVolume() const { return engineVolume; }
 
 
-// Реализация методов класса Ship
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР° Ship
 Ship::Ship(double speed, double fuelConsumption, const std::string& manufacturer, int yearOfManufacture,
          int numberOfSeats, double displacement)
     : Vehicle(speed, fuelConsumption, manufacturer, yearOfManufacture),
       numberOfSeats(numberOfSeats), displacement(displacement) {
-        std::cout << "Вызван конструктор Ship.\n";
+        std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Ship.\n";
     }
 
 Ship::~Ship() {
-    std::cout << "Вызван деструктор Ship.\n";
+    std::cout << "Р’С‹Р·РІР°РЅ РґРµСЃС‚СЂСѓРєС‚РѕСЂ Ship.\n";
 }
 
 void Ship::printData() const {
-    std::cout << "Тип: Корабль\n";
-    std::cout << "Скорость: " << speed << " узлов\n";
-    std::cout << "Расход топлива: " << fuelConsumption << " л/час\n";
-    std::cout << "Производитель: " << manufacturer << "\n";
-    std::cout << "Год выпуска: " << yearOfManufacture << "\n";
-    std::cout << "Кол-во посадочных мест: " << numberOfSeats << "\n";
-    std::cout << "Водоизмещение: " << displacement << " тонн\n";
+    std::cout << "РўРёРї: РљРѕСЂР°Р±Р»СЊ\n";
+    std::cout << "РЎРєРѕСЂРѕСЃС‚СЊ: " << speed << " СѓР·Р»РѕРІ\n";
+    std::cout << "Р Р°СЃС…РѕРґ С‚РѕРїР»РёРІР°: " << fuelConsumption << " Р»/С‡Р°СЃ\n";
+    std::cout << "РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЊ: " << manufacturer << "\n";
+    std::cout << "Р“РѕРґ РІС‹РїСѓСЃРєР°: " << yearOfManufacture << "\n";
+    std::cout << "РљРѕР»-РІРѕ РїРѕСЃР°РґРѕС‡РЅС‹С… РјРµСЃС‚: " << numberOfSeats << "\n";
+    std::cout << "Р’РѕРґРѕРёР·РјРµС‰РµРЅРёРµ: " << displacement << " С‚РѕРЅРЅ\n";
 }
 
 int Ship::calculateServiceLife() const {
-    // Пример расчета срока службы для корабля
+    // РџСЂРёРјРµСЂ СЂР°СЃС‡РµС‚Р° СЃСЂРѕРєР° СЃР»СѓР¶Р±С‹ РґР»СЏ РєРѕСЂР°Р±Р»СЏ
       return 40 - (2024 - getYearOfManufacture());
 }
 int Ship::getNumberOfSeats() const { return numberOfSeats; }
@@ -105,26 +105,25 @@ double Ship::getDisplacement() const { return displacement; }
 
 
 int main() {
-    setlocale(LC_ALL, "Russian");
-    // Создание объектов разных классов
-    std::cout << "Создание объектов:\n";
+    // РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚РѕРІ СЂР°Р·РЅС‹С… РєР»Р°СЃСЃРѕРІ
+    std::cout << "РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚РѕРІ:\n";
     Airplane airplane(800, 5000, "Boeing", 2018, 10000, 5000, 150);
     Car car(180, 10, "Toyota", 2020, 2.5);
     Ship ship(30, 500, "Royal Caribbean", 2010, 2000, 100000);
 
-    // Вывод данных и срока службы
-    std::cout << "\nИнформация о самолете:\n";
+    // Р’С‹РІРѕРґ РґР°РЅРЅС‹С… Рё СЃСЂРѕРєР° СЃР»СѓР¶Р±С‹
+    std::cout << "\nРРЅС„РѕСЂРјР°С†РёСЏ Рѕ СЃР°РјРѕР»РµС‚Рµ:\n";
     airplane.printData();
-    std::cout << "Срок службы: " << airplane.calculateServiceLife() << " лет\n";
+    std::cout << "РЎСЂРѕРє СЃР»СѓР¶Р±С‹: " << airplane.calculateServiceLife() << " Р»РµС‚\n";
 
-     std::cout << "\nИнформация о машине:\n";
+     std::cout << "\nРРЅС„РѕСЂРјР°С†РёСЏ Рѕ РјР°С€РёРЅРµ:\n";
     car.printData();
-    std::cout << "Срок службы: " << car.calculateServiceLife() << " лет\n";
+    std::cout << "РЎСЂРѕРє СЃР»СѓР¶Р±С‹: " << car.calculateServiceLife() << " Р»РµС‚\n";
 
 
-    std::cout << "\nИнформация о корабле:\n";
+    std::cout << "\nРРЅС„РѕСЂРјР°С†РёСЏ Рѕ РєРѕСЂР°Р±Р»Рµ:\n";
     ship.printData();
-     std::cout << "Срок службы: " << ship.calculateServiceLife() << " лет\n";
+     std::cout << "РЎСЂРѕРє СЃР»СѓР¶Р±С‹: " << ship.calculateServiceLife() << " Р»РµС‚\n";
 
     return 0;
 }
